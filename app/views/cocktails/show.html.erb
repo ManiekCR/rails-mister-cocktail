@@ -1,0 +1,11 @@
+<div class="container">
+  <div>
+    <h1><%= @cocktail.name %> <%= link_to edit_cocktail_path do %><i class="far fa-edit"></i><% end %> <%= link_to cocktail_path(@cocktail), method: 'delete' do %><i class="far fa-trash-alt"></i><% end %></h1>
+  </div>
+  <div>
+    <h3>Ingredient list:</h3>
+    <ul>
+
+    </ul>
+  </div>
+</div>
