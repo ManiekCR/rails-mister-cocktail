@@ -1,3 +1,4 @@
+
 <div class="container">
   <div>
     <h1><%= @cocktail.name %> <%= link_to edit_cocktail_path do %><i class="far fa-edit"></i><% end %> <%= link_to cocktail_path(@cocktail), method: 'delete' do %><i class="far fa-trash-alt"></i><% end %></h1>
@@ -5,7 +6,14 @@
   <div>
     <h3>Ingredient list:</h3>
     <ul>
-
+        <% @doses.each do |dose| %>
+          <li><%= dose.ingredient.name %> - <%= dose.description %>  <%= link_to dose_path(dose), method: 'delete' do %><i class="fas fa-trash"></i><% end %></li>
+        <% end %>
     </ul>
+      <%= simple_form_for [@cocktail, @dose] do |f| %>
+      <%= f.association :ingredient%>
+      <%= f.input :description %>
+      <%= f.submit "Add", class: 'btn btn-success' %>
+      <% end %>
   </div>
 </div>

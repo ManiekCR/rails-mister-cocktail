@@ -1,8 +1,8 @@
-<div class="container">
-  <ul>
+<div class="container pt-3">
+  <ul class="cards">
     <% @cocktails.each do |cocktail| %>
-      <%= link_to cocktail_path(cocktail) do %>
-      <li><%= cocktail.name %></li>
+      <%= link_to cocktail_path(cocktail), style: "text-decoration: none" do %>
+      <li class="card"><%= cocktail.name %></li>
       <% end %>
     <% end %>
   </ul>
