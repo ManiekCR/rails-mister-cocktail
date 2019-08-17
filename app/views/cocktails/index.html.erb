@@ -1,16 +1,19 @@
-<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://images.unsplash.com/photo-1560421741-47c568789776?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1650&q=80);">
-  <div class="container">
-    <p></p>
-  </div>
+<div class="home-video-wrapper">
+  <%= video_tag "bar_video.mp4", autoplay: :autoplay, loop: :loop, mute: :mute, class: "home_video" %>
+<i class="fas fa-arrow-down home" style="left: 50%"></i>
 </div>
-<div class="container pt-3">
+<div class="container">
   <div class="cards">
     <% @cocktails.each do |cocktail| %>
-      <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= cl_image_path cocktail.photo, height: 300, width: 400, crop: :fill %>')">
-        <%= link_to cocktail.name, cocktail_path(cocktail) %>
+        <%= link_to cocktail_path(cocktail) do %>
+      <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= cl_image_path cocktail.photo, height: 300, width: 400, crop: :fill %>')"><%= cocktail.name %>
       </div>
+        <% end %>
       <% end %>
   </div>
 </div>
+<footer class="text-center pt-5 pb-5 text-black-50">
+  <p>Made with <i class="fas fa-beer text-warning"></i> at Le Wagon</p>
+</footer>
 
 

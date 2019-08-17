@@ -1,4 +1,14 @@
-<div class="container">
-  <h1 class="text-center">Add a new Cocktail</h1>
-  <%= render 'form', cocktail: @cocktail %>
+<div class="banner d-flex" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('https://images.unsplash.com/photo-1556881261-e41e8db21055?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=934&q=80')">
+  <div class="container">
+<div class="row">
+  <div class="col-sm-12 col-md-8 col-lg-6">
+  <div class="justify-content-center text-white">
+    <h1 class="text-center">Add</h1>
+    <%= render 'form', cocktail: @cocktail %>
+    <%= link_to "Back", cocktails_path, class: "pl-3 text-success" %>
+  </div>
+  </div>
+
+  </div>
+</div>
 </div>

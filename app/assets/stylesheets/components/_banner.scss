@@ -2,7 +2,12 @@
   background-size: cover;
   background-position: center;
   padding: 150px 0;
-  height: 350px;
+  height: 100vh;
+  width: 100vw;
+  object-fit: cover;
+  top: 0;
+  z-index: -2;
+  position: absolute;
 }
 
 .banner h1 {
