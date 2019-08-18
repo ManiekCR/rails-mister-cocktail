@@ -1,20 +1,23 @@
-<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= cl_image_path @cocktail.photo,  crop: :fill %>')">
+<div id="show-banner" class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= cl_image_path @cocktail.photo,  crop: :fill %>')">
   <div class="text-center">
     <h1><%= @cocktail.name %> <%= link_to edit_cocktail_path do %><i class="far fa-edit text-white"></i><% end %> <%= link_to cocktail_path(@cocktail), method: 'delete', data: {confirm: "Are you sure?"} do %><i class="far fa-trash-alt text-white"></i><% end %></h1>
   </div>
   <div class="container" id="show_page">
     <div class="row">
       <div class="col-6">
-        <h3 class="text-white mt-5">Ingredient list</h3>
+        <h4 class="text-white mt-5">Ingredient list</h4>
         <ul>
             <% @doses.each do |dose| %>
-              <li class="text-white"><%= dose.ingredient.name %> - <%= dose.description %>  <%= link_to dose_path(dose), method: 'delete', data: {confirm: "Are you sure?"} do %><i class="fas fa-trash"></i><% end %></li>
+              <li class="text-white">
+                <span class="font-weight-bolder">
+                  <%= dose.ingredient.name %>
+                </span> - <%= dose.description %>  <%= link_to dose_path(dose), method: 'delete', data: {confirm: "Are you sure?"} do %><i class="fas fa-trash"></i><% end %></li>
             <% end %>
         </ul>
       </div>
       <div class="col-6">
         <div class="mt-5 text-white">
-          <h3>Add an ingredient</h3>
+          <h4>Add an ingredient</h4>
           <div>
             <%= simple_form_for [@cocktail, @dose] do |f| %>
             <%= f.association :ingredient %>
@@ -27,26 +30,41 @@
     </div>
     <div class="row">
       <div class="col-6">
-        <h3 class="text-white mt-5">Reviews</h3>
+        <h4 class="text-white mt-5 pl-2" style="background: #1c2d29">REVIEWS</h4>
         <ul>
             <% @reviews.each do |review| %>
-              <li class="text-white"><%= review.rating %> - <%= review.content %></li>
+              <li class="text-white font-weight-bolder"><%= review.rating %> / 5
+                <p style="font-size: 15px"><%= review.content %></p>
+              </li>
             <% end %>
         </ul>
       </div>
       <div class="col-6">
         <div class="mt-5 text-white">
-          <h3>Add a review</h3>
+          <h4 class="pl-2" style="background: #1c2d29">ADD A REVIEW</h4>
           <div>
-            <%= raise %>
             <%= simple_form_for [@cocktail, @review] do |f| %>
-            <%= f.input :rating %>
-            <%= f.input :description %>
-            <%= f.submit "Add", class: 'btn btn-success' %>
+            <% if @review.errors.any? %>
+              <div class="errors-container">
+                <ul>
+                  <% @review.errors.full_messages.each do |message| %>
+                    <li><%= message %></li>
+                  <% end %>
+                </ul>
+              </div>
             <% end %>
+            <div class="form-inputs">
+              <%= f.input :rating, collection: 0..5 %>
+              <%= f.input :content %>
+              <%= f.submit "Add", class: 'btn btn-success' %>
+            <% end %>
+            </div>
           </div>
         </div>
       </div>
     </div>
   </div>
+  <footer class="text-center pt-5 pb-5 text-black-50">
+    <p style="font-size: 13px">Made with <i class="fas fa-beer text-warning"></i> at Le Wagon Berlin</p>
+  </footer>
 </div>

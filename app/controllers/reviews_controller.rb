@@ -5,7 +5,7 @@ class ReviewsController < ApplicationController
   end
 
   def create
-    @review = Dose.new(review_params)
+    @review = Review.new(review_params)
     @review.cocktail = @cocktail
     if @review.save
       redirect_to cocktail_path(@cocktail)
