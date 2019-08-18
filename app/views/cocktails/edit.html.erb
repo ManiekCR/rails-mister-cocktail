@@ -5,7 +5,7 @@
         <div class="justify-content-center text-white">
           <h1 class="text-center"></h1>
           <%= render 'form', cocktail: @cocktail %>
-          <%= link_to "Back", cocktails_path, class: "pl-3 text-success" %>
+          <%= link_to "Back", cocktail_path(@cocktail), class: "pl-3 text-success" %>
         </div>
       </div>
     </div>
