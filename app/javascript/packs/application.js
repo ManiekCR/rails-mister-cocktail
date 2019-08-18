@@ -10,3 +10,4 @@ const arrowDown = document.querySelector("#arrow-down")
 arrowDown.addEventListener('click', (event) => {
   window.scrollTo({ top: 800, behavior: 'smooth' })
 });
+
